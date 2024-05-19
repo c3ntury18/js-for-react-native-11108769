@@ -1,31 +1,45 @@
-/**
- * This function converts an array of numbers into a new array by squaring even numbers and tripling odd numbers.
-*
- * @param {number[]} numbers - The numerical input array.
- * @return {number[]} A new array containing processed numbers.
- */
 function processArray(numbers) {
-    // Create a new array to save the processed numbers.
-    const result = [];
-
-    // Iterate through all the numbers in the input array.
-    for (let i = 0; i < numbers.length; i++) {
-        // Check whether the current number is even.
-        if (numbers[i] % 2 === 0) {
-            // Square the even number and include it in the result array.
-            result.push(numbers[i] * numbers[i]);
+    return numbers.map(number => {
+        if (number % 2 === 0) {
+            return number * number; // Square the even number
         } else {
-            // Triple the odd number and include it in the result array.
-            result.push(numbers[i] * 3);
+            return number * 3; // Triple the odd number
         }
-    }
-
-    // Give back the array that was processed.
-    return result;
+    });
 }
 
-// Example usage
-const numbers = [1, 2, 3, 4, 5];
-const processedNumbers = processArray(numbers);
-console.log("Original array:", numbers); // Output: [1, 2, 3, 4, 5]
-console.log("Processed array:", processedNumbers); // Output: [3, 4, 9, 16, 15]
+// Example usage:
+const inputArray = [1, 2, 3, 4, 5];
+const outputArray = processArray(inputArray);
+console.log(outputArray); // Output: [3, 4, 9, 16, 15]
+
+
+function processArray(numbers) {
+    return numbers.map(number => {
+        if (number % 2 === 0) {
+            return number * number; // Square the even number
+        } else {
+            return number * 3; // Triple the odd number
+        }
+    });
+}
+
+function formatArrayStrings(strings, numbers) {
+    return strings.map((str, index) => {
+        const number = numbers[index];
+        if (number % 2 === 0) {
+            return str.toUpperCase(); // Capitalize the entire string
+        } else {
+            return str.toLowerCase(); // Convert the string to lowercase
+        }
+    });
+}
+
+// Example usage:
+const inputStrings = ["Kumasi", "Accra", "Abuja", "new york"];
+const inputNumbers = [1, 2, 3, 4, 5];
+const processedNumbers = processArray(inputNumbers);
+const formattedStrings = formatArrayStrings(inputStrings, processedNumbers);
+
+console.log(processedNumbers); // Output: [3, 4, 9, 16, 15]
+console.log(formattedStrings); // Output: ["kumasi", "ACCRA", "abuja", "NEWYORK"]
